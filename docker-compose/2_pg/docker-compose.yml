@@ -4,19 +4,17 @@ services:
     depends_on: 
       root_db: 
         condition: service_healthy
-    environment: 
-      NC_DB: "pg://root_db:5432?u=postgres&p=password&d=root_db"
     image: "nocodb/nocodb:latest"
     ports: 
-      - "8080:8080"
+      - "8088:8080"
     restart: always
     volumes: 
       - "nc_data:/usr/app/data"
   root_db: 
     environment: 
-      POSTGRES_DB: root_db
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: postgres
+      POSTGRES_DB: noco_db
+      POSTGRES_PASSWORD: RjEe57h@My8cxB
+      POSTGRES_USER: noco_admin
     healthcheck: 
       interval: 10s
       retries: 10
